@@ -2,25 +2,23 @@ import React from "react";
 
 import "components/Button.scss";
 
+import classNames from "classnames";
+
 export default function Button(props) {
-  let buttonClass = "button";
+  const buttonClass = classNames("button", {
+    "button--confirm": props.confirm,
+    "button--danger": props.danger
+  });
 
-  if (props.confirm) {
-    buttonClass += " button--confirm";
-  }
-
-  if (props.danger) {
-    buttonClass += " button--danger";
-  }
-
-  if (props.danger) {
-    buttonClass += " button--danger";
-  }
+  console.log(buttonClass);
+  // button
+  // button button--confirm
+  // button button--danger
 
   console.log("props:", props)
-  // {children: 'Clickable', onClick: ƒ}
-  //   children: "Clickable"
-  //   onClick: ƒ action()
+  // // {children: 'Clickable', onClick: ƒ}
+  // //   children: "Clickable"
+  // //   onClick: ƒ action()
  
   return (
     <button
