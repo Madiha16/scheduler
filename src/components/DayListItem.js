@@ -7,7 +7,17 @@ export default function DayListItem(props) {
     "day-list__item--selected": props.selected,
     "day-list__item--full": props.spots === 0,
   });
-  // USE FULL CLASS NAME (day-list__item--selected)
+
+  const formatSpots = function() {
+    if (props.spots === 0) {
+      return "no spots remaining"
+    }
+    if (props.spots === 1) {
+      return "1 spot remaining"
+    }
+    return `${props.spots} spots remaining`
+  }
+  // Could have also used a chained ternary operator within the returned <h3>
 
   console.log("dayClass::", dayClass);
   console.log("props::", props)
@@ -18,15 +28,8 @@ export default function DayListItem(props) {
   return (
     <li className={dayClass} onClick={() => props.setDay(props.name)}>
       <h2 className="text--regular">{props.name}</h2> 
-      <h3 className="text--light">{props.spots} spots remaining</h3>
+      <h3 className="text--light">{formatSpots()}</h3>
+
     </li>
   );
 }
-
-// Instruction
-// Give classes to the <li> in DayListItem by passing a variable called dayClass to className.
-// Use the classnames library to conditionally apply the correct classes based on the following rules:
-
-// day-list__item all the time
-// day-list__item--selected class name if props.selected is true
-// day-list__item--full class name if props.spots is 0.
