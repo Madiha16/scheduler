@@ -1,28 +1,32 @@
 import React from "react";
+import "components/DayListItem.scss"
+import classNames from "classnames";
 
 export default function DayListItem(props) {
+  const dayClass = classNames("day-list__item", {
+    "day-list__item--selected": props.selected,
+    "day-list__item--full": props.spots === 0,
+  });
+  // USE FULL CLASS NAME (day-list__item--selected)
+
+  console.log("dayClass::", dayClass);
+  console.log("props::", props)
+  // Unselected -> {name: 'Monday', spots: 5}
+  // Selected -> {name: 'Monday', spots: 5, selected: true}
+  // Clickable -> props:: {name: 'Tuesday', spots: 5, setDay: ƒ}
 
   return (
-    <li onClick={() => props.setDay(props.name)}>
+    <li className={dayClass} onClick={() => props.setDay(props.name)}>
       <h2 className="text--regular">{props.name}</h2> 
       <h3 className="text--light">{props.spots} spots remaining</h3>
     </li>
   );
 }
 
-// // CORRECT!
-// function MyComponent(props) {
-//   const a = 1;
-//   const b = 2;
-//   return (
-//     <div>
-//       <h1 onClick={() => props.doStuff(a,b)}>Click Me to Do Stuff</h1>
-//     </div>
-//   )
-// }
+// Instruction
+// Give classes to the <li> in DayListItem by passing a variable called dayClass to className.
+// Use the classnames library to conditionally apply the correct classes based on the following rules:
 
-// Use the onClick event handler to handle the click event that sets the day.
-// Remember that when we use setDay, we need to pass it the name of the day.
-
-// We know that this component takes in three attributes (name, spots, selected) and one action (setDay) as
-// props, so we'll need to update our DayListItem component to reflect this after building our stories.
+// day-list__item all the time
+// day-list__item--selected class name if props.selected is true
+// day-list__item--full class name if props.spots is 0.
