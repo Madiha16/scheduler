@@ -16,9 +16,14 @@ export default function InterviewerListItem(props) {
   // console.log("InterviewerListItem.js >props::", props)
     // {id: 1, name: 'Sylvia Palmer', avatar: 'https://i.imgur.com/LpaY82x.png', selected: true}
     // {id: 1, name: 'Sylvia Palmer', avatar: 'https://i.imgur.com/LpaY82x.png', setInterviewer: ƒ}
+    // id
+    // name
+    // avatar
+    // selected
+    // setInterviewer
   
   return (
-    <li onClick={() => props.setInterviewer(props.id)} className={interviewerClass}>
+    <li onClick={props.setInterviewer} className={interviewerClass}>
       <img
         className="interviewers__item-image"
         src={props.avatar}

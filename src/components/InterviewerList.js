@@ -18,18 +18,19 @@ export default function InterviewerList(props) {
     // will log for each interviewer
     // console.log("InterviewerListItem.js >interviewerItems >interviewer::", interviewer);
 
-    console.log("InterviewerListItem.js >interviewer.id::", interviewer.id);
+    // console.log("InterviewerListItem.js >interviewer.id::", interviewer.id);
 
     return (
       <InterviewerListItem
         key={interviewer.id}
         // need to pass down the id! interviewer id!
-        id={interviewer.id}
+        // id={interviewer.id}
         name={interviewer.name}
         avatar={interviewer.avatar}
         selected={interviewer.id === props.interviewer}
         // this is passing down the setInterviewer function
-        setInterviewer={props.setInterviewer}
+        // setInterviewer={props.setInterviewer}
+        setInterviewer={() => props.setInterviewer(interviewer.id)}
       />
 
     );
