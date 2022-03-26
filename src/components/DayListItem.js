@@ -19,8 +19,8 @@ export default function DayListItem(props) {
   }
   // Could have also used a chained ternary operator within the returned <h3>
 
-  console.log("dayClass::", dayClass);
-  console.log("props::", props)
+  // console.log("dayClass::", dayClass);
+  // console.log("props in DayListItem::", props)
   // Unselected -> {name: 'Monday', spots: 5}
   // Selected -> {name: 'Monday', spots: 5, selected: true}
   // Clickable -> props:: {name: 'Tuesday', spots: 5, setDay: ƒ}
@@ -29,7 +29,6 @@ export default function DayListItem(props) {
     <li className={dayClass} onClick={() => props.setDay(props.name)}>
       <h2 className="text--regular">{props.name}</h2> 
       <h3 className="text--light">{formatSpots()}</h3>
-
     </li>
   );
 }
