@@ -3,7 +3,7 @@ import DayListItem from './DayListItem';
 
 export default function DayList(props) {
 
-  // console.log("props in DayList::", props)
+  // console.log("DayList.js >DayList >props::", props)
   // {days: Array(3), day: 'Tuesday', setDay: ƒ}
     //   day: "Tuesday"
     //   days: Array(3)
@@ -18,16 +18,16 @@ export default function DayList(props) {
   const dayItems = props.days.map((day) => {
 
     // will log for each day
-    console.log("day variable in dayItems func::", day);
-    // day variable in dayItems func:: 
-    // {id: 2, name: 'Tuesday', spots: 5}
-    //   id: 2
-    //   name: "Tuesday"
-    //   spots: 5
-    //   [[Prototype]]: Object
+    // console.log("DayList.js >dayItems >day variable::", day);
+      // day variable in dayItems func:: 
+      // {id: 2, name: 'Tuesday', spots: 5}
+      //   id: 2
+      //   name: "Tuesday"
+      //   spots: 5
+      //   [[Prototype]]: Object
 
-    // console.log("props in dayItems func::", props);
-    // same as props logged outside on dayItems func in DayList
+    // console.log("DayList.js >dayItems >props::", props);
+      // same as props logged outside on dayItems func in DayList
 
     return (
       <DayListItem
