@@ -13,7 +13,7 @@ export default function InterviewerListItem(props) {
   //   }
   // };
 
-  console.log("InterviewerListItem >props::", props)
+  // console.log("InterviewerListItem.js >props::", props)
     // {id: 1, name: 'Sylvia Palmer', avatar: 'https://i.imgur.com/LpaY82x.png', selected: true}
     // {id: 1, name: 'Sylvia Palmer', avatar: 'https://i.imgur.com/LpaY82x.png', setInterviewer: ƒ}
   
