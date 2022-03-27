@@ -16,6 +16,7 @@ import Empty from "components/Appointment/Empty"
 import Show from "components/Appointment/Show"
 import Confirm from "components/Appointment/Confirm"
 import Status from "components/Appointment/Status"
+import Error from "components/Appointment/Error"
 
 storiesOf("Button", module)
   .addParameters({
@@ -163,3 +164,14 @@ storiesOf("Appointment", module)
     />
   ))
   .add("Delete", () => <Status message="Deleting"/>)
+  .add("Error", () => (
+    <Error
+      message={"Could not delete appointment."}
+      onClose={action("onClose")}
+    />
+    ))
+
+//   The <Error> component should accept the following props:
+
+// message:String eg. "Could not delete appointment."
+// onClose:Function to be called when the user clicks the Close button
