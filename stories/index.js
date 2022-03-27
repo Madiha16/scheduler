@@ -17,6 +17,7 @@ import Show from "components/Appointment/Show"
 import Confirm from "components/Appointment/Confirm"
 import Status from "components/Appointment/Status"
 import Error from "components/Appointment/Error"
+import Form from "components/Appointment/Form"
 
 storiesOf("Button", module)
   .addParameters({
@@ -170,3 +171,38 @@ storiesOf("Appointment", module)
       onClose={action("onClose")}
     />
     ))
+  .add("Edit", () => (
+    <Form
+      student={"Madi Fayyaz"}
+      interviewer={2}
+      interviewers={interviewers}
+      onSave={action("onSave")}
+      onCancel={action("onCancel")}
+    />
+    ))
+  .add("Create", () => (
+    <Form
+      interviewers={interviewers}
+      onSave={action("onSave")}
+      onCancel={action("onCancel")}
+    />
+    ))
+
+// As part of our Edit story, the <Form> component should take the following props:
+// student:String
+// interviewer:Number
+// interviewers:Array
+// onSave:Function
+// onCancel:Function
+
+// As part of our Create story, the <Form> component should take the following props:
+// interviewers:Array
+// onSave:Function
+// onCancel:Function
+
+// Instruction
+// Add the stories for Create and Edit and chain them to our previous <Appointment> stories.
+
+// In the Edit story, for the student and interviewer values, you may hard-code your own
+// name and put a number between 0 - 4 for the ID. These are mock data that simulates
+// editing a form that already contains information.

@@ -1,7 +1,9 @@
+import React from 'react';
 import InterviewerList from "components/InterviewerList";
 import Button from "components/Button";
 
 export default function Form(props) {
+  // console.log("Form.js >> props::", props);
   return (
     <main className="appointment__card appointment__card--create">
       <section className="appointment__card-left">
@@ -19,12 +21,16 @@ export default function Form(props) {
         </form>
         <InterviewerList 
           /* your code goes here */
+          // Won't render properly in Storybook without:
+          // student={props.student}
+          // interviewer={props.interviewer}
+          // interviewers={props.interviewers}
         />
       </section>
       <section className="appointment__card-right">
         <section className="appointment__actions">
-          <Button danger {/* your code goes here */}>Cancel</Button>
-          <Button confirm {/* your code goes here */}>Save</Button>
+          <Button danger onClick={props.onCancel}>Cancel</Button>
+          <Button confirm onClick={props.onSave}>Save</Button>
         </section>
       </section>
     </main>
