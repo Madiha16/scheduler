@@ -154,19 +154,18 @@ storiesOf("Appointment", module)
       onDelete={action("onDelete")}
     />
     ))
-  // .add("Edit", () => <Show onEdit={action("onEdit")} />)
+  .add("Confirm", () => (
+    <Confirm
+      message={"Delete the appointment?"}
+      onConfirm={action("onConfirm")}
+      onCancel={action("onCancel")}
+    />
+  ))
 
 
-// The <Show> component should accept the following props:
+// Confirm Stories
+// The <Confirm> component should accept the following props:
 
-// student:String eg. "Lydia Miller-Jones"
-// interviewer:Object we can use the interview object that already exists in stories/index.js for this
-// onEdit:Function to be called when the user clicks the Edit button
-// onDelete:Function to be called when the user clicks the Delete button
-
-// Instruction
-// Add the story for the <Show> component to stories/index.js.
-
-// We want to pass the onEdit and onDelete named action callbacks to help confirm that the component
-// behaves correctly when clicked. In this case, we should pass onEdit={action("onEdit")} so that we
-// can see the output in the action panel when we click the edit button.
+// message:String eg. "Delete the appointment?"
+// onConfirm:Function to be called when the user clicks the Confirm button
+// onCancel:Function to be called when the user clicks the Cancel button
