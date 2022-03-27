@@ -170,8 +170,3 @@ storiesOf("Appointment", module)
       onClose={action("onClose")}
     />
     ))
-
-//   The <Error> component should accept the following props:
-
-// message:String eg. "Could not delete appointment."
-// onClose:Function to be called when the user clicks the Close button
