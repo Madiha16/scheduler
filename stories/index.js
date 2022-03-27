@@ -15,6 +15,7 @@ import Header from "components/Appointment/Header"
 import Empty from "components/Appointment/Empty"
 import Show from "components/Appointment/Show"
 import Confirm from "components/Appointment/Confirm"
+import Status from "components/Appointment/Status"
 
 storiesOf("Button", module)
   .addParameters({
@@ -161,11 +162,4 @@ storiesOf("Appointment", module)
       onCancel={action("onCancel")}
     />
   ))
-
-
-// Confirm Stories
-// The <Confirm> component should accept the following props:
-
-// message:String eg. "Delete the appointment?"
-// onConfirm:Function to be called when the user clicks the Confirm button
-// onCancel:Function to be called when the user clicks the Cancel button
+  .add("Delete", () => <Status message="Deleting"/>)
