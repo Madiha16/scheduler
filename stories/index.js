@@ -138,10 +138,34 @@ storiesOf("InterviewerList", module)
   ));
 
 storiesOf("Appointment", module)
-.addParameters({
-  backgrounds: [{ name: "white", value: "#fff", default: true }]
-})
-.add("Appointment", () => <Appointment />)
-.add("Appointment with Time", () => <Appointment time="12pm" />)
-.add("Header", () => <Header time="12pm" />)
-.add("Empty", () => <Empty onAdd={action("onAdd")} />);
+  .addParameters({
+    backgrounds: [{ name: "white", value: "#fff", default: true }]
+  })
+  .add("Appointment", () => <Appointment />)
+  .add("Appointment with Time", () => <Appointment time="12pm" />)
+  .add("Header", () => <Header time="12pm" />)
+  .add("Empty", () => <Empty onAdd={action("onAdd")} />)
+  .add("Show", () => (
+    <Show
+      student={"Lydia Miller-Jones"}
+      interviewer={interviewers[0].name}
+      onEdit={action("onEdit")}
+      onDelete={action("onDelete")}
+    />
+    ))
+  // .add("Edit", () => <Show onEdit={action("onEdit")} />)
+
+
+// The <Show> component should accept the following props:
+
+// student:String eg. "Lydia Miller-Jones"
+// interviewer:Object we can use the interview object that already exists in stories/index.js for this
+// onEdit:Function to be called when the user clicks the Edit button
+// onDelete:Function to be called when the user clicks the Delete button
+
+// Instruction
+// Add the story for the <Show> component to stories/index.js.
+
+// We want to pass the onEdit and onDelete named action callbacks to help confirm that the component
+// behaves correctly when clicked. In this case, we should pass onEdit={action("onEdit")} so that we
+// can see the output in the action panel when we click the edit button.
