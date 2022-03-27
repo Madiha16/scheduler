@@ -24,7 +24,7 @@ export default function DayListItem(props) {
     // day-list__item day-list__item--selected
     // day-list__item
     // day-list__item day-list__item--full
-  console.log("DayListItem.js >props::", props)
+  // console.log("DayListItem.js >props::", props)
     // in localhost8000
     // {name: 'Monday', spots: 2, selected: true, setDay: ƒ}
     // {name: 'Tuesday', spots: 5, selected: false, setDay: ƒ}

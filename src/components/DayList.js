@@ -3,6 +3,10 @@ import DayListItem from './DayListItem';
 
 export default function DayList(props) {
 
+  // do not destructure in map
+  // can destructure props with curly braces in begining of function!
+  const {value, onChange} = props;
+
   // console.log("DayList.js >DayList >props::", props)
   // {days: Array(3), day: 'Tuesday', setDay: ƒ}
     //   day: "Tuesday"
@@ -19,7 +23,6 @@ export default function DayList(props) {
 
     // will log for each day
     // console.log("DayList.js >dayItems >day variable::", day);
-      // day variable in dayItems func:: 
       // {id: 2, name: 'Tuesday', spots: 5}
       //   id: 2
       //   name: "Tuesday"
@@ -29,15 +32,16 @@ export default function DayList(props) {
     // console.log("DayList.js >dayItems >props::", props);
       // same as props logged outside on dayItems func in DayList
 
+
+
     return (
       <DayListItem
         key={day.id}
         name={day.name} 
         spots={day.spots} 
-        selected={day.name === props.day}
-        setDay={props.setDay}
+        selected={day.name === value}
+        setDay={onChange}
       />
-
     );
   })
 
