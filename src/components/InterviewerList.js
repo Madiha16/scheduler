@@ -16,7 +16,7 @@ export default function InterviewerList({value, interviewers, onChange}) {
   const interviewerItems = interviewers.map((interviewer) => {
 
     // will log for each interviewer
-    console.log("InterviewerListItem.js >interviewerItems >interviewer::", interviewer);
+    // console.log("InterviewerListItem.js >interviewerItems >interviewer::", interviewer);
 
     // console.log("InterviewerListItem.js >interviewerItems >props::", props);
     // {interviewers: Array(5)}
