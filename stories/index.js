@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from 'react';
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import "index.scss";
@@ -164,7 +164,7 @@ storiesOf("Appointment", module)
       onCancel={action("onCancel")}
     />
   ))
-  .add("Delete", () => <Status message="Deleting"/>)
+  .add("Status", () => <Status message="Deleting"/>)
   .add("Error", () => (
     <Error
       message={"Could not delete appointment."}
@@ -187,22 +187,9 @@ storiesOf("Appointment", module)
       onCancel={action("onCancel")}
     />
     ))
-
-// As part of our Edit story, the <Form> component should take the following props:
-// student:String
-// interviewer:Number
-// interviewers:Array
-// onSave:Function
-// onCancel:Function
-
-// As part of our Create story, the <Form> component should take the following props:
-// interviewers:Array
-// onSave:Function
-// onCancel:Function
-
-// Instruction
-// Add the stories for Create and Edit and chain them to our previous <Appointment> stories.
-
-// In the Edit story, for the student and interviewer values, you may hard-code your own
-// name and put a number between 0 - 4 for the ID. These are mock data that simulates
-// editing a form that already contains information.
+  .add("Appointment Empty", () => (
+    <Fragment>
+      <Appointment id={1} time="4pm" />
+      <Appointment time="5pm" />
+    </Fragment>
+  ))
