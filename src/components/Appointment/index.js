@@ -5,14 +5,14 @@ import Show from './Show';
 import Empty from './Empty';
 
 export default function Appointment(props) {
-  
+  const { interview } = props;
   // console.log("index.js >> Appointment >>props::", props);
     // {id: 1, time: '4pm'}
 
   return (
     <article className="appointment">
       <Header time={props.time} />
-        {props.interview ? <Show /> : <Empty />}
+        {interview ? <Show student={interview.student} interviewer={interview.interviewer} /> : <Empty />}
     </article>
   );
 };
