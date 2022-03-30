@@ -48,7 +48,6 @@ export default function Form(props) {
         </form>
         <InterviewerList 
           /* your code goes here */
-          // Won't render properly in Storybook without:
           value={interviewer}
           interviewers={props.interviewers}
           onChange={setInterviewer}
