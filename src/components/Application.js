@@ -4,24 +4,6 @@ import DayList from "./DayList";
 import Appointment from "./Appointment";
 import axios from "axios";
 
-// const days = [
-//   {
-//     id: 1,
-//     name: "Monday",
-//     spots: 2,
-//   },
-//   {
-//     id: 2,
-//     name: "Tuesday",
-//     spots: 5,
-//   },
-//   {
-//     id: 3,
-//     name: "Wednesday",
-//     spots: 0,
-//   },
-// ];
-
 const appointments = {
   "1": {
     id: 1,
@@ -106,6 +88,7 @@ export default function Application(props) {
       </section>
       <section className="schedule">
         {/* Replace this with the schedule elements durint the "The Scheduler" activity. */}
+        {/* Map over appointments array in section tag (instead of saving to a variable) */}
         {Object.values(appointments).map((appointment) => {
           return (
             <Appointment
