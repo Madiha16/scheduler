@@ -54,6 +54,8 @@ export default function Application(props) {
     appointments: {}
   })
 
+  const setDay = day => setState({ ...state, day });
+
   // console.log("Application.js >> day, props::", day, props, Object.values(appointments))
 
   useEffect(() => {
@@ -62,7 +64,7 @@ export default function Application(props) {
       console.log("response::", response);
       console.log("response.data::", response.data);
       // setDays([...response.data])
-      // setState( ...state, day: "Tuesday" });
+      setState({ ...state, day: "Tuesday" });
     })
     .catch((error) => {
       console.log(error.response.status);
