@@ -48,29 +48,38 @@ export default function Application(props) {
   const [state, setState] = useState({
     day: "Monday",
     days: [],
-    appointments: {}
+    appointments: {},
+    interviewers: {}
   })
 
   const dailyAppointments = [];
 
   const setDay = day => setState({ ...state, day });
-  
-  // const setDays = (days) => {
-  //   // setState({ ...state, days });
-  //   // remove the dependency by passing a function to setState
-  //   // Now that the useEffect doesn't depend on state it will no longer complain.
-  //   // The action used to set the state still gets the previous state to ensure that only the days value changes.
-  //   setState(prev => ({ ...prev, days }));
-  // };
 
   // console.log("Application.js >> day, props::", day, props, Object.values(appointments))
 
+  // We are going to make a request to both endpoints at the same time.
+  // When both have returned their data, we need to update both parts of the state at the same time.
+  // We will use Promise.all to make both requests before updating the state.
+  // We'll pass Promise.all an array of promises. When all promises have resolved, we will receive an array
+  // of resolved values matching the order of the array passed to Promise.all.
   useEffect(() => {
-    axios.get('/api/days')
-    .then(response => {
-      console.log("response::", response);
-      console.log("response.data::", response.data);
-      // setDays([...response.data])
+    Promise.all([
+      axios.get('/api/days'),
+      axios.get('/api/appointments'),
+      axios.get('/api/interviewers')
+    ]).then((all) => {
+      // Now that we can access the data for days and appointments we need to update both in our state at the same time.
+      // Update the effect to set the days and appointments state at the same time.
+      setState(prev => ({...prev, days: all[0].data, appointments: all[1].data, interviewers: all[2] }));
+      console.log("all0:", all[0]); // days data
+      console.log("all0.d:",all[0].data); // days ARRAY
+
+      console.log("all1:", all[1]); // appointments
+      console.log("all1.d:", all[1].data); // appointments OBJECT
+
+      console.log("all2:", all[2]); // interviewers data
+      console.log("all2.d:", all[2].data); // interviewers OBJECT
     })
     .catch((error) => {
       console.log(error.response.status);
@@ -78,6 +87,20 @@ export default function Application(props) {
       console.log(error.response.data);
     });
   }, []);
+  // Could have saved returned promises to an array like Andy did
+  // then save each response to a variable:
+
+  // const promises = [recipePromise, ingredientPromise];
+
+  // Promise.all(promises)
+  //   .then((responseArr) => {
+  //     // console.log(responseArr);
+  //     const recipeResponse = responseArr[0];
+  //     setRecipes(recipeResponse.data);
+
+  //     setIngredients(responseArr[1].data);
+  //   });
+
 
   return (
     <main className="layout">
