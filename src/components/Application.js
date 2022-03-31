@@ -3,6 +3,7 @@ import "components/Application.scss";
 import DayList from "./DayList";
 import Appointment from "./Appointment";
 import axios from "axios";
+import { getAppointmentsForDay } from "helpers/selectors";
 
 // const appointments = {
 //   "1": {
@@ -52,9 +53,50 @@ export default function Application(props) {
     interviewers: {}
   })
 
-  const dailyAppointments = [];
+  const dailyAppointments = getAppointmentsForDay(state, state.day);
+  console.log("state::", state, "state.day::", state.day, "dailyAppointments::", dailyAppointments)
+    // appointments: {1: {…}, 2: {…}, 3: {…}, 4: {…}, 5: {…}, 6: {…}, 7: {…}, 8: {…}, 9: {…}, 10: {…}, 11: {…}, 12: {…}, 13: {…}, 14: {…}, 15: {…}, 16: {…}, 17: {…}, 18: {…}, 19: {…}, 20: {…}, 21: {…}, 22: {…}, 23: {…}, 24: {…}, 25: {…}}
+      //     1:
+      // id: 1
+      // interview: null
+      // time: "12pm"
+      // [[Prototype]]: Object
+      // 2: {id: 2, time: '1pm', interview: {…}}
+    // day: "Monday"
+    // days: (5) [{…}, {…}, {…}, {…}, {…}]
+        //     0: {id: 1, name: 'Monday', appointments: Array(5), interviewers: Array(5), spots: 2}
+        // 1:
+        // appointments: (5) [6, 7, 8, 9, 10]
+        // id: 2
+        // interviewers: (5) [3, 5, 7, 8, 10]
+        // name: "Tuesday"
+        // spots: 4
+        // [[Prototype]]: Object
+        // 2: {id: 3, name: 'Wednesday', appointments: Array(5), interviewers: Array(5), spots: 2}
+    // interviewers: {data: {…}, status: 200, statusText: 'OK', headers: {…}, config: {…}, …}
+        //     interviewers:
+        // config: {transitional: {…}, transformRequest: Array(1), transformResponse: Array(1), timeout: 0, adapter: ƒ, …}
+        // data: {1: {…}, 2: {…}, 3: {…}, 4: {…}, 5: {…}, 6: {…}, 7: {…}, 8: {…}, 9: {…}, 10: {…}}
+        // headers: {access-control-allow-origin: '*', content-length: '781', content-type: 'application/json; charset=utf-8', date: 'Thu, 31 Mar 2022 10:56:29 GMT', etag: 'W/"30d-3H0+hNLeoDR8/s+XemQgOCUbXbg"', …}
+        // request: XMLHttpRequest {onreadystatechange: null, readyState: 4, timeout: 0, withCredentials: false, upload: XMLHttpRequestUpload, …}
+        // status: 200
+        // statusText: "OK"
+
+  // state.day
+    // Monday
+  // dailyAppointments
+    // 0: Array(5)
+      // 0: {id: 1, time: '12pm', interview: null}
+      // 1: {id: 2, time: '1pm', interview: {…}}
+      // 2: {id: 3, time: '2pm', interview: {…}}
+      // 3: {id: 4, time: '3pm', interview: null}
+      // 4:
+      // id: 5
+      // interview: {student: 'Jamal Jordan', interviewer: 8}
+      // time: "4pm"
 
   const setDay = day => setState({ ...state, day });
+
 
   // console.log("Application.js >> day, props::", day, props, Object.values(appointments))
 
