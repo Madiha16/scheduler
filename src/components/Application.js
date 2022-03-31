@@ -49,9 +49,9 @@ export default function Application(props) {
   // const [days, setDays] = useState([]);
 
   const [state, setState] = useState({
-    //
     day: "Monday",
-    days: []
+    days: [],
+    appointments: {}
   })
 
   // console.log("Application.js >> day, props::", day, props, Object.values(appointments))
@@ -61,7 +61,8 @@ export default function Application(props) {
     .then(response => {
       console.log("response::", response);
       console.log("response.data::", response.data);
-      setDays([...response.data])
+      // setDays([...response.data])
+      // setState( ...state, day: "Tuesday" });
     })
     .catch((error) => {
       console.log(error.response.status);
@@ -81,8 +82,8 @@ export default function Application(props) {
         <hr className="sidebar__separator sidebar--centered" />
         <nav className="sidebar__menu">
           <DayList
-            days={days}
-            value={day}
+            days={state.days}
+            value={state.day}
             onChange={setDay}
           />
         </nav>
