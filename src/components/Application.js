@@ -55,13 +55,13 @@ export default function Application(props) {
 
   const setDay = day => setState({ ...state, day });
   
-  const setDays = (days) => {
-    // setState({ ...state, days });
-    // remove the dependency by passing a function to setState
-    // Now that the useEffect doesn't depend on state it will no longer complain.
-    // The action used to set the state still gets the previous state to ensure that only the days value changes.
-    setState(prev => ({ ...prev, days }));
-  };
+  // const setDays = (days) => {
+  //   // setState({ ...state, days });
+  //   // remove the dependency by passing a function to setState
+  //   // Now that the useEffect doesn't depend on state it will no longer complain.
+  //   // The action used to set the state still gets the previous state to ensure that only the days value changes.
+  //   setState(prev => ({ ...prev, days }));
+  // };
 
   // console.log("Application.js >> day, props::", day, props, Object.values(appointments))
 
@@ -70,7 +70,7 @@ export default function Application(props) {
     .then(response => {
       console.log("response::", response);
       console.log("response.data::", response.data);
-      setDays([...response.data])
+      // setDays([...response.data])
     })
     .catch((error) => {
       console.log(error.response.status);
