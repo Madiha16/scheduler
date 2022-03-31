@@ -44,9 +44,6 @@ const appointments = {
 };
 
 export default function Application(props) {
-  // const [day, setDay] = useState('Monday');
-
-  // const [days, setDays] = useState([]);
 
   const [state, setState] = useState({
     day: "Monday",
@@ -55,6 +52,11 @@ export default function Application(props) {
   })
 
   const setDay = day => setState({ ...state, day });
+  
+  const setDays = (days) => {
+    // setState({ ...state, days });
+    setState(prev => ({ ...prev, days }));
+  };
 
   // console.log("Application.js >> day, props::", day, props, Object.values(appointments))
 
@@ -63,8 +65,7 @@ export default function Application(props) {
     .then(response => {
       console.log("response::", response);
       console.log("response.data::", response.data);
-      // setDays([...response.data])
-      setState({ ...state, day: "Tuesday" });
+      setDays([...response.data])
     })
     .catch((error) => {
       console.log(error.response.status);
