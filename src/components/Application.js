@@ -55,6 +55,9 @@ export default function Application(props) {
   
   const setDays = (days) => {
     // setState({ ...state, days });
+    // remove the dependency by passing a function to setState
+    // Now that the useEffect doesn't depend on state it will no longer complain.
+    // The action used to set the state still gets the previous state to ensure that only the days value changes.
     setState(prev => ({ ...prev, days }));
   };
 
