@@ -8,6 +8,21 @@ export default function DayList(props) {
   const {value, onChange} = props;
 
   // console.log("DayList.js >DayList >props::", props)
+
+    // {days: Array(0), value: 'Monday', onChange: ƒ}
+    // days: []
+    // onChange: day => {…}
+    // value: "Monday"
+    // [[Prototype]]: Object
+
+    // DayList.js:10 DayList.js >DayList >props:: 
+    // {days: Array(5), value: 'Monday', onChange: ƒ}
+    // days: (5) [{…}, {…}, {…}, {…}, {…}]
+    // onChange: day => {…}
+    // value: "Monday"
+
+
+    
   // {days: Array(3), day: 'Tuesday', setDay: ƒ}
     //   day: "Tuesday"
     //   days: Array(3)
