@@ -3,7 +3,7 @@ import "components/Application.scss";
 import DayList from "./DayList";
 import Appointment from "./Appointment";
 import axios from "axios";
-import { getAppointmentsForDay, getInterview } from "helpers/selectors";
+import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "helpers/selectors";
 
 export default function Application(props) {
 
@@ -14,10 +14,13 @@ export default function Application(props) {
     interviewers: {}
   })
 
+  const setDay = day => setState({ ...state, day });
+
   const dailyAppointments = getAppointmentsForDay(state, state.day);
   // console.log("state::", state, "state.day::", state.day, "dailyAppointments::", dailyAppointments);
 
-  const setDay = day => setState({ ...state, day });
+  const interviewers = getInterviewersForDay(state, state.day)
+  // console.log("state::", state, "state.day::", state.day, "interviewers::", interviewers);
 
   useEffect(() => {
     Promise.all([
@@ -30,7 +33,7 @@ export default function Application(props) {
       setState(prev => ({...prev,
         days: all[0].data,
         appointments: all[1].data,
-        interviewers: all[2] }));
+        interviewers: all[2].data }));
       // console.log("all0.d:",all[0].data); // days ARRAY
       // console.log("all1.d:", all[1].data); // appointments OBJECT
       // console.log("all2.d:", all[2].data); // interviewers OBJECT
@@ -70,11 +73,15 @@ export default function Application(props) {
         {dailyAppointments.map((appointment) => {
           const interview = getInterview(state, appointment.interview);
 
+          console.log("interview::", interview);
+          // gives object with student, interviewer (undefined)
+
           return (
             <Appointment
               key={appointment.id}
               {...appointment}
-              // {...interview}
+              interview={interview}
+              interviewers={interviewers}
             />
           );
         })}
