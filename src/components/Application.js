@@ -25,9 +25,35 @@ export default function Application(props) {
   function bookInterview(id, interview) {
     console.log(id, interview);
     console.log("book interview function called with id, interview values!")
-  }
 
-  // console.log("bookInterview::", bookInterview);
+    const appointment = {
+      // going through all aptmts, get the one at [id]
+      ...state.appointments[id],
+      // override the interview
+      interview: { ...interview }
+    };
+
+    // create new apt obj
+    const appointments = {
+      // get all the aptmts from state, spread them out
+      ...state.appointments,
+      // override the appointment with [id]
+      [id]: appointment
+    };
+
+    axios.put(`/api/appointments/${id}`, { interview })
+      .then(() => {
+        console.log("axios put sent");
+        // setState({...state, appointments})
+        // When the response comes back we update the state using the existing setState
+        // Transition to SHOW when the promise returned by props.bookInterview resolves. 
+        setState(prev => ({...prev, appointments }));
+      })
+      .catch((error) => {
+        console.log("error:", error)
+      });
+
+  }
 
   useEffect(() => {
     Promise.all([

@@ -22,19 +22,12 @@ export default function Appointment(props) {
       student: name,
       interviewer
     };
-    // console.log("save::", save)
-    // console.log("name::", name)
-    // console.log("interviewer::", interviewer)
-    // console.log("interview::", interview)
-      // name:: helloo
-      // interviewer:: 4
-      // interview:: {student: 'helloo', interviewer: 4}
-
-    // bookInterview(id, interview)
     props.bookInterview(props.id, interview)
+
+    transition(SHOW)
   }
 
-  // console.log("index.js >> Appointment >>props::", props);
+  console.log("index.js >> Appointment >>props::", props);
     // {id: 4, time: '3pm', interview: null, interviewers: Array(5), bookInterview: ƒ, …}
       // bookInterview: ƒ bookInterview(id, interview)
       // id: 4
@@ -46,7 +39,7 @@ export default function Appointment(props) {
     <article className="appointment">
       <Header time={props.time} />
         {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
-        {mode === SHOW && (
+        {mode === SHOW && props.interview && (
           <Show
             student={props.interview.student}
             interviewer={props.interview.interviewer}
