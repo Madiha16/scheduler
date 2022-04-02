@@ -22,6 +22,13 @@ export default function Application(props) {
   const interviewers = getInterviewersForDay(state, state.day)
   // console.log("state::", state, "state.day::", state.day, "interviewers::", interviewers);
 
+  function bookInterview(id, interview) {
+    console.log(id, interview);
+    console.log("book interview id and interview values above!")
+  }
+
+  // console.log("bookInterview::", bookInterview);
+
   useEffect(() => {
     Promise.all([
       axios.get('/api/days'),
@@ -73,8 +80,10 @@ export default function Application(props) {
         {dailyAppointments.map((appointment) => {
           const interview = getInterview(state, appointment.interview);
 
-          console.log("interview::", interview);
+          // console.log("Application >interview::", interview);
           // gives object with student, interviewer (undefined)
+          // console.log("Application >appointment::", appointment);
+
 
           return (
             <Appointment
@@ -82,6 +91,7 @@ export default function Application(props) {
               {...appointment}
               interview={interview}
               interviewers={interviewers}
+              bookInterview={bookInterview}
             />
           );
         })}

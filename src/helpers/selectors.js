@@ -19,17 +19,20 @@ export function getInterview(state, interview) {
 
   // decontruct interview obj to get student and interviwer keys
   // interview: { student: "Chad Takahashi", interviewer: 2 }
-  const { student, interviewer } = interview;
+  // const { student, interviewer } = interview;
+  let interviewerID = interview.interviewer;
 
-  // set up empty interviewObj, make student, interviewer keys to hold values 
-  let interviewObj = {};
-  interviewObj.student = student;  
-  interviewObj.interviewer = state.interviewers[interviewer];
-  return interviewObj;
+  return {
+    student: interview.student,
+    interviewer: {...state.interviewers[interviewerID]}
+  }
+
+  // // set up empty interviewObj, make student, interviewer keys to hold values 
+  // let interviewObj = {};
+  // interviewObj.student = student;  
+  // interviewObj.interviewer = state.interviewers[interviewer];
+  // return interviewObj;
 }
-
-
-
 
 export function getInterviewersForDay(state, day) {
   //... returns an object of interviewers for that day

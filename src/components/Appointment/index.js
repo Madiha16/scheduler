@@ -7,7 +7,7 @@ import useVisualMode from 'hooks/useVisualMode';
 import Form from './Form';
 
 export default function Appointment(props) {
-  // const { interview } = props;
+  // const { bookInterview } = props;
 
   const EMPTY = "EMPTY";
   const SHOW = "SHOW";
@@ -17,12 +17,30 @@ export default function Appointment(props) {
     props.interview ? SHOW : EMPTY
   );
 
+  function save(name, interviewer) {
+    const interview = {
+      student: name,
+      interviewer
+    };
+    // console.log("save::", save)
+    // console.log("name::", name)
+    // console.log("interviewer::", interviewer)
+    // console.log("interview::", interview)
+      // name:: helloo
+      // interviewer:: 4
+      // interview:: {student: 'helloo', interviewer: 4}
+
+    // bookInterview(id, interview)
+    props.bookInterview(props.id, interview)
+  }
+
   // console.log("index.js >> Appointment >>props::", props);
-    // {id: 4, time: '3pm', interview: {…}}
+    // {id: 4, time: '3pm', interview: null, interviewers: Array(5), bookInterview: ƒ, …}
+      // bookInterview: ƒ bookInterview(id, interview)
       // id: 4
-      // interview:
-      // interviewer: 3
-      // student: "Archie Cohen"
+      // interview: null
+      // interviewers: (5) [{…}, {…}, {…}, {…}, {…}]
+      // time: "3pm"
 
   return (
     <article className="appointment">
@@ -34,15 +52,9 @@ export default function Appointment(props) {
             interviewer={props.interview.interviewer}
           />
         )}
-        {mode === CREATE && <Form interviewers={props.interviewers} onCancel={back} />}
+        {mode === CREATE && <Form interviewers={props.interviewers} onSave={save} onCancel={back} />}
     </article>
   );
 };
 
-// All <Appointment> components will render a <Header> that takes in a time prop.
-// If props.interview (an interview object) is truthy the <Appointment> will render
-// the <Show> component, else it should render the <Empty> component.
-
-// Note
-// Using ternary operator version of conditional rendering makes the most sense in
-// this case where we want to render <Show> or <Empty> based on props.interview.
+// onSave={() => save(props.bookInterview(id, interview))}
