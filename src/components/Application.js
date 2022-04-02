@@ -24,7 +24,7 @@ export default function Application(props) {
 
   function bookInterview(id, interview) {
     console.log(id, interview);
-    console.log("book interview id and interview values above!")
+    console.log("book interview function called with id, interview values!")
   }
 
   // console.log("bookInterview::", bookInterview);

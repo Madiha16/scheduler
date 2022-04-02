@@ -6,7 +6,7 @@ export default function Form(props) {
   // const [student, interviewer, interviewers, onCancel, onSave] = props;
   const [student, setStudent] = useState(props.student || "");
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
-  console.log("Form.js >> props::", props);
+  // console.log("Form.js >> props::", props);
     // {student: 'Madi Fayyaz', interviewer: 2, interviewers: Array(5), onSave: ƒ, onCancel: ƒ}
     //   interviewer: 2
     //   interviewers: (5) [{…}, {…}, {…}, {…}, {…}]
@@ -56,7 +56,7 @@ export default function Form(props) {
       <section className="appointment__card-right">
         <section className="appointment__actions">
           <Button danger onClick={cancel}>Cancel</Button>
-          <Button confirm onClick={props.onSave(student, interviewer)}>Save</Button>
+          <Button confirm onClick={() => props.onSave(student, interviewer)}>Save</Button>
         </section>
       </section>
     </main>
