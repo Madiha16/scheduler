@@ -17,7 +17,7 @@ export default function Appointment(props) {
     props.interview ? SHOW : EMPTY
   );
 
-  console.log("index.js >> Appointment >>props::", props);
+  // console.log("index.js >> Appointment >>props::", props);
     // {id: 4, time: '3pm', interview: {…}}
       // id: 4
       // interview:
