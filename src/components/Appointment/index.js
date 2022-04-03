@@ -38,10 +38,8 @@ export default function Appointment(props) {
     props
       .bookInterview(props.id, interview)
       .then((res) => {
-        if (res) transition(SHOW)
-        else {
-          transition(ERROR_SAVE, true)
-        }
+        console.log("successful axios promise in save func")
+        transition(SHOW)
       })
       .catch((error) => {
         transition(ERROR_SAVE, true)
@@ -51,15 +49,13 @@ export default function Appointment(props) {
 
   function destroy() {
 
-    transition(DELETING, true)
+    transition(DELETING, true);
 
     props
       .cancelInterview(props.id)
       .then((res) => {
-        if (res) transition(EMPTY)
-        else {
-          transition(ERROR_DELETE, true)
-        }
+        console.log("successful axios promise in destroy func")
+        transition(EMPTY)
       })
       .catch((error) => {
         transition(ERROR_DELETE, true)
@@ -92,8 +88,8 @@ export default function Appointment(props) {
             onCancel={back}
           />
         )}
-        {mode === ERROR_SAVE && <Error message="Error. Unable to book appointment" />}
-        {mode === ERROR_DELETE && <Error message="Error. Unable to delete appointment" />}
+        {mode === ERROR_SAVE && <Error onClose={back} message="Error. Unable to book appointment" />}
+        {mode === ERROR_DELETE && <Error onClose={back} message="Error. Unable to delete appointment" />}
     </article>
   );
 };

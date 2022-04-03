@@ -23,8 +23,8 @@ export default function Application(props) {
   // console.log("state::", state, "state.day::", state.day, "interviewers::", interviewers);
 
   function bookInterview(id, interview) {
-    console.log(id, interview);
-    console.log("book interview function called with id, interview values!")
+    // console.log(id, interview);
+    // console.log("book interview function called with id, interview values!")
 
     const appointment = {
       // going through all aptmts, get the one at [id]
@@ -49,9 +49,13 @@ export default function Application(props) {
         // Transition to SHOW when the promise returned by props.bookInterview resolves. 
         setState(prev => ({...prev, appointments }));
       })
-      .catch((error) => {
-        console.log("Error in put request (saving appointment):", error)
-      });
+      
+      // This was stopping error from reaching the returned promise in index.js Appointment component (destroy func)
+      // You can THROW an error to pass it into the next chain block if you need to
+
+      // .catch((error) => {
+      //   console.log("Error in put request (saving appointment):", error)
+      // });
 
   }
 
@@ -78,9 +82,13 @@ export default function Application(props) {
         // console.log('axios.delete successful');
         setState(prev => ({...prev, appointments }));
       })
-      .catch((error) => {
-        console.log("Error deleting appointment:", error)
-      });
+
+      // This was stopping error from reaching the returned promise in index.js Appointment component (destroy func)
+      // You can THROW an error to pass it into the next chain block if you need to
+
+      // .catch((error) => {
+      //   console.log("Error deleting appointment:", error)
+      // });
   }
 
 
