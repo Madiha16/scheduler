@@ -55,6 +55,33 @@ export default function Application(props) {
 
   }
 
+  function cancelInterview(id) {
+    // console.log("we need to delete this interview::", id);
+
+    const appointment = {
+      // going through all aptmts, get the one at [id]
+      ...state.appointments[id],
+      // override the interview
+      interview: null
+    };
+
+    // create new apt obj
+    const appointments = {
+      // get all the aptmts from state, spread them out
+      ...state.appointments,
+      // override the appointment with [id]
+      [id]: appointment
+    };
+
+    return axios.delete(`/api/appointments/${id}`)
+      .then(() => {
+        // console.log('axios.delete successful');
+        setState(prev => ({...prev, appointments }));
+      });
+  }
+
+
+
   useEffect(() => {
     Promise.all([
       axios.get('/api/days'),
@@ -118,6 +145,7 @@ export default function Application(props) {
               interview={interview}
               interviewers={interviewers}
               bookInterview={bookInterview}
+              cancelInterview={cancelInterview}
             />
           );
         })}
