@@ -41,7 +41,7 @@ export default function InterviewerList({value, interviewers, onChange}) {
         key={interviewer.id}
         name={interviewer.name}
         avatar={interviewer.avatar}
-        selected={interviewer.id === value}
+        selected={interviewer.id === value.id} // NEED TO COMPARE WITH value.id, not just the value object
         setInterviewer={() => onChange(interviewer.id)}
       />
     );

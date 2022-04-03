@@ -7,6 +7,8 @@ export default function Form(props) {
   const [student, setStudent] = useState(props.student || "");
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
   // console.log("Form.js >> props::", props);
+  console.log("Form.js >> props.interviewer:", props.interviewer);
+
     // {student: 'Madi Fayyaz', interviewer: 2, interviewers: Array(5), onSave: ƒ, onCancel: ƒ}
     //   interviewer: 2
     //   interviewers: (5) [{…}, {…}, {…}, {…}, {…}]
@@ -28,6 +30,7 @@ export default function Form(props) {
     props.onCancel();
     return
   }
+  console.log("props.student:", props.student);
 
   return (
     <main className="appointment__card appointment__card--create">

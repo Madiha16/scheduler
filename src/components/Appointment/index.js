@@ -32,38 +32,20 @@ export default function Appointment(props) {
     props.bookInterview(props.id, interview).then(() => transition(SHOW))
   }
 
-  function onDelete(id) {
-    transition(CONFIRM);
-  }
-
-  // function onDelete(id) {
-  //   transition(CONFIRM);
-  //   props.cancelInterview(props.id)
-  //     .then(() => transition(DELETING))
-  //     .then(() => transition(EMPTY))
-  // }
-
-  function onEdit() {
-    transition(SHOW);
-  }
-
   function onConfirm() {
     transition(DELETING)
     props.cancelInterview(props.id).then(() => transition(EMPTY))
   }
 
-  function onCancel() {
-    back();
-    transition(EMPTY)
-  }
-
-  console.log("index.js >> Appointment >>props::", props);
+  // console.log("index.js >> Appointment >>props::", props);
     // {id: 4, time: '3pm', interview: null, interviewers: Array(5), bookInterview: ƒ, …}
       // bookInterview: ƒ bookInterview(id, interview)
       // id: 4
       // interview: null
       // interviewers: (5) [{…}, {…}, {…}, {…}, {…}]
       // time: "3pm"
+
+      console.log("props.interview.student:", props.interview)
 
   return (
     <article className="appointment">
@@ -73,15 +55,23 @@ export default function Appointment(props) {
           <Show
             student={props.interview.student}
             interviewer={props.interview.interviewer}
-            onEdit={onEdit}
-            onDelete={onDelete}
+            onEdit={() => transition(EDIT)}
+            onDelete={() => transition(CONFIRM)}
           />
         )}
         {mode === CREATE && <Form interviewers={props.interviewers} onSave={save} onCancel={back} />}
         {mode === SAVING && <Status message={"Saving..."} />}
         {mode === DELETING && <Status message={"Deleting..."} />}
         {mode === CONFIRM && <Confirm message={"Delete the appointment?"} onConfirm={onConfirm} onCancel={back} />}
-        {mode === EDIT && <Form interviewers={props.interviewers} onSave={save} onCancel={back} />}
+        {mode === EDIT && (
+          <Form
+            student={props.interview.student}
+            interviewer={props.interview.interviewer}
+            interviewers={props.interviewers}
+            onSave={save}
+            onCancel={back}
+          />
+        )}
     </article>
   );
 };
