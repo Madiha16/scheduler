@@ -12,36 +12,19 @@ import "./InterviewerList.scss"
 // interviewer:number - a number that represents the id of the currently selected interviewer
 
 export default function InterviewerList({value, interviewers, onChange}) {
-
+  // console.log("value:", value);
   const interviewerItems = interviewers.map((interviewer) => {
-
-    // will log for each interviewer
-    // console.log("InterviewerListItem.js >interviewerItems >interviewer::", interviewer);
-
-    // console.log("InterviewerListItem.js >interviewerItems >props::", props);
-    // {interviewers: Array(5)}
-    // {interviewers: Array(5), value: 3}
-    // {interviewers: Array(5), onChange: ƒ}
-      // 0: {id: 1, name: 'Sylvia Palmer', avatar: 'https://i.imgur.com/LpaY82x.png'}
-      // 1: {id: 2, name: 'Tori Malcolm', avatar: 'https://i.imgur.com/Nmx0Qxo.png'}
-      // 2: {id: 3, name: 'Mildred Nazir', avatar: 'https://i.imgur.com/T2WwVfS.png'}
-      // 3: {id: 4, name: 'Cohana Roy', avatar: 'https://i.imgur.com/FK8V841.jpg'}
-      // 4: {id: 5, name: 'Sven Jones', avatar: 'https://i.imgur.com/twYrpay.jpg'}
-    
-
-    // destructure props object to use value and onChange key words without props. infront
-    // const {value, onChange} = props;
-    // console.log("InterviewerListItem.js >interviewerItems >props:::::", value, onChange);
-      // Initial >> undefined, undefined
-      // Selected >> value=3, undefined
-      // Clickable >> undefined, action() {
 
     return (
       <InterviewerListItem
         key={interviewer.id}
         name={interviewer.name}
         avatar={interviewer.avatar}
-        selected={interviewer.id === value.id} // NEED TO COMPARE WITH value.id, not just the value object
+        selected={interviewer.id === value}
+        // no... value is a number, not an object!
+        // value is a prop being passed from Form component which will either:
+        // 1) be null if creating a new appointment
+        // 2) be set on line 8 from props.interviewer from Appointment component when editing a pre-exiitng appointment (won't be null)
         setInterviewer={() => onChange(interviewer.id)}
       />
     );

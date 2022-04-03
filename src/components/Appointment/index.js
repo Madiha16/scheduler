@@ -36,17 +36,7 @@ export default function Appointment(props) {
     transition(DELETING)
     props.cancelInterview(props.id).then(() => transition(EMPTY))
   }
-
-  // console.log("index.js >> Appointment >>props::", props);
-    // {id: 4, time: '3pm', interview: null, interviewers: Array(5), bookInterview: ƒ, …}
-      // bookInterview: ƒ bookInterview(id, interview)
-      // id: 4
-      // interview: null
-      // interviewers: (5) [{…}, {…}, {…}, {…}, {…}]
-      // time: "3pm"
-
-      console.log("props.interview.student:", props.interview)
-
+  
   return (
     <article className="appointment">
       <Header time={props.time} />
@@ -66,7 +56,7 @@ export default function Appointment(props) {
         {mode === EDIT && (
           <Form
             student={props.interview.student}
-            interviewer={props.interview.interviewer}
+            interviewer={props.interview.interviewer.id}
             interviewers={props.interviewers}
             onSave={save}
             onCancel={back}
@@ -75,5 +65,3 @@ export default function Appointment(props) {
     </article>
   );
 };
-
-// onSave={() => save(props.bookInterview(id, interview))}

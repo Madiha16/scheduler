@@ -6,15 +6,6 @@ export default function Form(props) {
   // const [student, interviewer, interviewers, onCancel, onSave] = props;
   const [student, setStudent] = useState(props.student || "");
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
-  // console.log("Form.js >> props::", props);
-  console.log("Form.js >> props.interviewer:", props.interviewer);
-
-    // {student: 'Madi Fayyaz', interviewer: 2, interviewers: Array(5), onSave: ƒ, onCancel: ƒ}
-    //   interviewer: 2
-    //   interviewers: (5) [{…}, {…}, {…}, {…}, {…}]
-    //   onCancel: ƒ action()
-    //   onSave: ƒ action()
-    //   student: "Madi Fayyaz"
   
   // reset() function to the Form component that calls setStudent("") and setInterviewer(null).
   const reset = function() {
@@ -30,7 +21,12 @@ export default function Form(props) {
     props.onCancel();
     return
   }
-  console.log("props.student:", props.student);
+  
+  console.log("Form.js >> props::", props);
+  // {interviewers: Array(5), onSave: ƒ, onCancel: ƒ}
+  //   interviewers: (5) [{…}, {…}, {…}, {…}, {…}]
+  //   onCancel: ƒ ()
+  //   onSave: ƒ save(name, interviewer)
 
   return (
     <main className="appointment__card appointment__card--create">
