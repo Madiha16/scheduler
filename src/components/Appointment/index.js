@@ -32,16 +32,21 @@ export default function Appointment(props) {
   }
 
   function onDelete(id) {
-    // const interview = {
-    //   student: name,
-    //   interviewer
-    // };
     transition(DELETING);
-    props.cancelInterview(props.id).then(() => transition(EMPTY))
+    props.cancelInterview(props.id).then(() => transition(CONFIRM))
   }
 
-  function onEdit(id) {
-    transition(SHOW);
+  // function onEdit() {
+  //   transition(SHOW);
+  // }
+
+  function onConfirm() {
+    transition(EMPTY)
+  }
+
+  function onCancel() {
+    back();
+    transition(EMPTY)
   }
 
   console.log("index.js >> Appointment >>props::", props);
@@ -67,6 +72,7 @@ export default function Appointment(props) {
         {mode === CREATE && <Form interviewers={props.interviewers} onSave={save} onCancel={back} />}
         {mode === SAVING && <Status message={"Saving..."} />}
         {mode === DELETING && <Status message={"Deleting..."} />}
+        {mode === CONFIRM && <Confirm message={"Delete the appointment?"} onConfirm={onConfirm} onCancel={back} />}
     </article>
   );
 };
