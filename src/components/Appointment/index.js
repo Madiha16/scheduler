@@ -29,12 +29,21 @@ export default function Appointment(props) {
       interviewer
     };
     transition(SAVING)
-    props.bookInterview(props.id, interview).then(() => transition(SHOW))
+    props.bookInterview(props.id, interview)
+    .then(() => transition(SHOW))
+    .catch((error) => {
+      console.log("error:", error)
+    });
+
   }
 
   function onConfirm() {
     transition(DELETING)
-    props.cancelInterview(props.id).then(() => transition(EMPTY))
+    props.cancelInterview(props.id)
+    .then(() => transition(EMPTY))
+    .catch((error) => {
+      console.log("error:", error)
+    });
   }
   
   return (

@@ -50,7 +50,7 @@ export default function Application(props) {
         setState(prev => ({...prev, appointments }));
       })
       .catch((error) => {
-        console.log("error:", error)
+        console.log("Error in put request (saving appointment):", error)
       });
 
   }
@@ -77,6 +77,9 @@ export default function Application(props) {
       .then(() => {
         // console.log('axios.delete successful');
         setState(prev => ({...prev, appointments }));
+      })
+      .catch((error) => {
+        console.log("Error deleting appointment:", error)
       });
   }
 
