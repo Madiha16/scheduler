@@ -12,6 +12,30 @@ const useApplicationData = function(initial) {
 
   const setDay = day => setState({ ...state, day });
 
+  const updateSpots = function (state, appointments, id) {
+
+    // Get the day Object
+    const dayObj = state.days.find(day => day.name === state.day);
+    
+    // get the array of appintment id's
+    const aptIdArr = dayObj.appointments;
+
+    // if the interview is null in appointments object at id, put it into an array
+    const nullAptArr = aptIdArr.filter( (id) => !appointments[id].interview);
+
+    // spots are equal to the length of the null appointment array's length
+    const spots = nullAptArr.length;
+    // console.log("spots=", spots);
+
+    // set day equal to spread of dayObj, update spots
+    const day = {...dayObj, spots };
+    
+    const newDays = state.days.map(d => d.name === state.day? day : d);
+    
+    // return days array
+    return newDays;
+  };
+
   useEffect(() => {
     Promise.all([
       axios.get('/api/days'),
@@ -50,10 +74,11 @@ const useApplicationData = function(initial) {
     return axios.put(`/api/appointments/${id}`, { interview })
       .then(() => {
         console.log("axios put sent");
+        const days = updateSpots(state, appointments, id);
         // setState({...state, appointments})
         // When the response comes back we update the state using the existing setState
         // Transition to SHOW when the promise returned by props.bookInterview resolves. 
-        setState(prev => ({...prev, appointments }));
+        setState(prev => ({...prev, appointments, days }));
       })
   }
 
@@ -75,25 +100,18 @@ const useApplicationData = function(initial) {
       [id]: appointment
     };
 
+    const days = updateSpots(state, appointments, id);
+
     return axios.delete(`/api/appointments/${id}`)
       .then(() => {
         // console.log('axios.delete successful');
-        setState(prev => ({...prev, appointments }));
+        setState(prev => ({...prev, appointments, days }));
       })
   }
+
+  console.log("state:", state, "setDay:", setDay, "bookInterview:", bookInterview, "cancelInterview:", cancelInterview)
 
   return { state, setDay, bookInterview, cancelInterview };
 }
 
-
 export default useApplicationData;
-
-
-// Create a new file hooks/useApplicationData.js and move the logic used to manage the state from the components/Application.js into it.
-
-// Our useApplicationData Hook will return an object with four keys:
-
-// The state object will maintain the same structure.
-// The setDay action can be used to set the current day.
-// The bookInterview action makes an HTTP request and updates the local state.
-// The cancelInterview action makes an HTTP request and updates the local state.
