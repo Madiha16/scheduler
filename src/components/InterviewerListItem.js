@@ -7,21 +7,6 @@ export default function InterviewerListItem(props) {
     "interviewers__item--selected": props.selected
   });
 
-  // const formatName = function() {
-  //   if (props.selected) {
-  //     return props.name
-  //   }
-  // };
-
-  // console.log("InterviewerListItem.js >props::", props)
-    // {id: 1, name: 'Sylvia Palmer', avatar: 'https://i.imgur.com/LpaY82x.png', selected: true}
-    // {id: 1, name: 'Sylvia Palmer', avatar: 'https://i.imgur.com/LpaY82x.png', setInterviewer: ƒ}
-      // id
-      // name
-      // avatar
-      // selected
-      // setInterviewer
-  
   return (
     <li onClick={props.setInterviewer} className={interviewerClass}>
       <img
@@ -30,13 +15,6 @@ export default function InterviewerListItem(props) {
         alt={props.name}
       />
       {props.selected && props.name}
-      {/* better to use && vs ternary operator with props.name and empty string*/}
     </li>
   );
 }
-
-// Add an event handler to the <li>.
-// As mentioned above, each <InterviewerListItem> should be clickable. When clicked,
-// the setInterviewer function should run, taking the interviewer id as a parameter.
-
-// Recall that we implemented a similar thing in the <DayListItem>.

@@ -48,7 +48,7 @@ export default function Form(props) {
         <InterviewerList 
           /* your code goes here */
           value={interviewer}
-          interviewers={props.interviewers}
+          interviewers={props.interviewers.toString()}
           onChange={setInterviewer}
         />
       </section>
