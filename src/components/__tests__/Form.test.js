@@ -36,8 +36,6 @@ describe("Form", () => {
 
   });
 
-
-
   it("validates that the student name is not blank", () => {
     /* 1. Create the mock onSave function */
     const onSave = jest.fn();
@@ -77,9 +75,6 @@ describe("Form", () => {
     expect(onSave).toHaveBeenCalledWith("Lydia Miller-Jones", null);
   });
 
-
-
-
   it("calls onCancel and resets the input field", () => {
     const onCancel = jest.fn();
     const { getByText, getByPlaceholderText, queryByText } = render(
@@ -105,7 +100,5 @@ describe("Form", () => {
   
     expect(onCancel).toHaveBeenCalledTimes(1);
   });
-
-  
 
 });
