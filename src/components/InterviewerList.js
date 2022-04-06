@@ -3,6 +3,7 @@ import InterviewerListItem from "./InterviewerListItem"
 import "./InterviewerList.scss"
 import PropTypes from 'prop-types';
 
+// will check if interviewers is being passed in as an array
 InterviewerList.propTypes = {
   interviewers: PropTypes.array.isRequired
 };
