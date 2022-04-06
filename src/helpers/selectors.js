@@ -30,7 +30,6 @@ export function getInterviewersForDay(state, day) {
 
   // find day object from state.days array of day objects
   const getDayObj = state.days.find(dayObj => dayObj.name === day)
-  // console.log("getDayObj:", getDayObj)
 
   // if day not found return empty array (or if days data is empty)
   if (!getDayObj) {

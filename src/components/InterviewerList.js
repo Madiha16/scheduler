@@ -7,7 +7,7 @@ InterviewerList.propTypes = {
   interviewers: PropTypes.array.isRequired
 };
 
-export default function InterviewerList({value, interviewers, onChange}) {
+function InterviewerList({value, interviewers, onChange}) {
   const interviewerItems = interviewers.map((interviewer) => {
 
     return (
@@ -29,3 +29,5 @@ export default function InterviewerList({value, interviewers, onChange}) {
   );
 
 }
+
+export default InterviewerList;

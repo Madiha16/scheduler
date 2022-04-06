@@ -10,7 +10,6 @@ import Confirm from './Confirm';
 import Error from './Error';
 
 export default function Appointment(props) {
-  // const { bookInterview } = props;
 
   const EMPTY = "EMPTY";
   const SHOW = "SHOW";
@@ -38,12 +37,10 @@ export default function Appointment(props) {
     props
       .bookInterview(props.id, interview)
       .then((res) => {
-        console.log("successful axios promise in save func")
         transition(SHOW)
       })
       .catch((error) => {
         transition(ERROR_SAVE, true)
-        console.log("Error in save func:", error)
       });
   }
 
@@ -54,12 +51,10 @@ export default function Appointment(props) {
     props
       .cancelInterview(props.id)
       .then((res) => {
-        console.log("successful axios promise in destroy func")
         transition(EMPTY)
       })
       .catch((error) => {
         transition(ERROR_DELETE, true)
-        console.log("Error in destroy func:", error)
       });
   }
   

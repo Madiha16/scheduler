@@ -9,16 +9,6 @@ export default function Button(props) {
     "button--confirm": props.confirm,
     "button--danger": props.danger
   });
-
-  // console.log(buttonClass);
-  // button
-  // button button--confirm
-  // button button--danger
-
-  // console.log("props:", props)
-  // // {children: 'Clickable', onClick: ƒ}
-  // //   children: "Clickable"
-  // //   onClick: ƒ action()
  
   return (
     <button
