@@ -22,6 +22,12 @@ it("renders without crashing", () => {
   render(<Application />);
 });
 
+// To skip a test, use xit or test.skip
+
+// Use the describe function to group the Appointment component tests
+
+// Change the watch mode to p and type in Appointment to only run the Appointment.test.js file after each update
+
 describe("Appointment", () => {
   it("renders without crashing", () => {
     render(<Appointment />);
